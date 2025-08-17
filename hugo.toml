@@ -8,3 +8,9 @@ title = 'Architecture Logicielle'
     disableLandingPageButton = true
     themeVariant = ['zen-light']
     disableInlineCopyToClipBoard = true
+    
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.goldmark.parser]
+    attribute = true
