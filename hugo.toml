@@ -1,5 +1,5 @@
 theme = 'hugo-theme-relearn'
-baseURL = 'https://cegepmv.github.io/420-310'
+baseURL = 'https://cegepmv.github.io/420-310/'
 languageCode = 'fr-fr'
 title = 'Architecture Logicielle'
 
