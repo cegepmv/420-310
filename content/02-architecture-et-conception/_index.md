@@ -2,8 +2,8 @@
 pre = '<b>2. </b>'
 title = "Architecture et conception"
 weight = 2
-+++
 draft = true
++++
 
 <!-- ---
 ## 1) Qu’est-ce que l’architecture logicielle ?
