@@ -2,7 +2,7 @@
 pre = '<b>1.2.2 </b>'
 title = "Le diagramme de séquence système (SSD)"
 weight = 2
-draft = true
+draft = false
 +++
 
 <!-- 
