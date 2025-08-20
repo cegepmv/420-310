@@ -73,3 +73,17 @@ Méthodologie DevOps
 Développement rapide d'applications (RAD)
 Méthodologie du modèle de développement de systèmes dynamiques
 Méthodologie de développement Lean -->
+
+
+
+<!-- ## Les principales **méthodes de conception**
+
+| Méthode | Quand l’utiliser ? | Points clés |
+|---------|-------------------|-------------|
+| **Cascade / V-Model** | Projets aux exigences stables, gros livrable unique | Phases séquentielles, documentation exhaustive |
+| **Agile (Scrum / Kanban)** | Évolution fréquente du périmètre, itérations courtes | Sprints, backlog, revues régulières |
+| **Spiral** | Projets à haut risque technique | Cycles incrémentaux + gestion de risque |
+| **Extreme Programming (XP)** | Équipes réduites, forte culture de test | TDD, pair-programming, refactoring permanent |
+
+> Nous approfondirons chaque approche à travers des études de cas et des exercices pratiques.
+> -->

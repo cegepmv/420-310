@@ -1,7 +1,7 @@
 +++
 pre = '<b>2. </b>'
 title = "Architecture et conception"
-weight = 2
+weight = 3
 draft = true
 +++
 

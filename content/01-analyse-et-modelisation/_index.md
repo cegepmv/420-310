@@ -1,7 +1,7 @@
 +++
 pre = '<b>1. </b>'
 title = "Analyse et modélisation"
-weight = 1
+weight = 2
 +++
 
 L’objectif de ce module est de **transformer un besoin flou en spécifications claires et vérifiables**, puis de proposer une **modélisation** suffisamment précise pour guider la conception et la mise en œuvre. On y établit le vocabulaire commun (exigences, vues UML, critères d’acceptation) et on situe ces artefacts dans le **cycle de vie logiciel** et les **méthodologies** (Agile, cascade, DevOps).
@@ -25,7 +25,7 @@ L’objectif de ce module est de **transformer un besoin flou en spécifications
   - Itérative (incréments, feedback, prototypage)
   - Agile (scrum/kanban, sprints, user stories)
   - DevOps
-  - **Outils** de gestion (Trello)
+  - **Outils** de gestion (Jira/Trello)
   {{% /tab %}}
 {{% /tabs %}}
 

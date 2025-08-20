@@ -1,7 +1,7 @@
 +++
 pre = '<b>3. </b>'
 title = "Qualité, tests et déploiement"
-weight = 2
+weight = 4
 draft = true
 +++
 
