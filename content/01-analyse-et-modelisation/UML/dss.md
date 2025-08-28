@@ -1,6 +1,6 @@
 +++
 pre = '<b>1.2.2 </b>'
-title = "Le diagramme de séquence système (SSD)"
+title = "Le diagramme de séquence système (DSS)"
 weight = 2
 draft = false
 +++

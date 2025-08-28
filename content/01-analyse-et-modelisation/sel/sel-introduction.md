@@ -15,9 +15,123 @@ Elle sert de contrat **vérifiable** entre parties prenantes (métier, dev, QA, 
 
 L’image classique du **“tree swing”** illustre les malentendus possibles entre client, analyste, dev et test : chacun imagine une solution différente au même besoin, d’où l’importance d’un **SEL précis**.
 
-## Exigences **fonctionnelles** vs **non fonctionnelles** 
-Les exigences non fonctionnelles désignent les attributs de qualité d'un système qui définissent ses performances plutôt que ses fonctions. Contrairement aux exigences fonctionnelles, qui spécifient les actions et les tâches qu'un système doit accomplir, les exigences non fonctionnelles se concentrent sur les caractéristiques globales et le comportement du système dans diverses conditions. Elles abordent des aspects tels que la performance, la convivialité, la fiabilité et l'évolutivité, garantissant ainsi que le système répond aux normes de qualité et offre une expérience utilisateur satisfaisante.
+<!-- === Styles locaux pour les titres et accordéons === -->
+<style>
+  /* titres de section — style léger */
+  .section-title{
+    background:#f8f9fb;            
+    border:1px solid #e5e7eb;
+    border-radius:8px;
+    padding:8px 12px;
+    margin:22px 0 12px;
+  }
+  .section-title h3{ margin:0; font-weight:700; }
+</style>
 
+## Étapes d'analyse du problème
+<style>
+  .details-menu summary{list-style:none;cursor:pointer;font-weight:700;padding:.25rem 0}
+  .details-menu summary::-webkit-details-marker{display:none}
+  .details-menu summary::before{content:"▶";font-size:.9em;margin-right:.5rem;transition:transform .2s ease}
+  .details-menu[open] summary::before{content:"▼"}
+</style>
+
+1. <details class="details-menu"><summary>Obtenir l’<b>accord</b> sur la <b>définition du problème</b></summary>
+   Aligner tout le monde sur le problème réel à résoudre (pas la solution).   <br></br>
+   <b>Questions</b> : Quel impact ? Observable/mesurable du problème sur les activités (coût, délai, qualité, risque…). Affecte qui ? Lister les parties prenantes impactées (rôles, équipes, systèmes). Comment sait-on que c’est résolu ? Indiquer la valeur attendue en cas de résolution (quelques bénéfices clés, indicateurs cibles)
+</details>
+
+2. <details class="details-menu"><summary>Comprendre les <b>causes racines</b></summary>
+   Éviter de traiter les symptômes. <br></br>
+   <b>Quelques méthodes</b> : “5 pourquoi”, Ishikawa, analyse de données/incidents. 
+
+    🔗 [Exemple diagramme d’Ishikawa (cause à effet)](https://www.biotechno.fr/IMG/scenari/dossierpse/co/Ishikawa.html)
+</details>
+
+3. <details class="details-menu"><summary>Identifier les <b>utilisateurs</b> et les <b>parties prenantes</b></summary>
+   Savoir qui est impacté, qui décide et qui opère. <br></br>
+   <b>Livrables</b> : carte des parties prenantes (intérêt/influence), acteurs/personas, RACI sommaire.
+   
+   {{< figure src="/420-310/images/stakeholders-degrees.png" caption="Carte des parties prenantes par degrés : 1) Utilisateurs directs du produit, 2) Personnes/systèmes travaillant avec les résultats, 3) Acteurs qui installent, déploient ou supportent le système." >}}
+   
+   > Astuce : cette carte aide à ne pas oublier des profils clés (ex. support, conformité, systèmes voisins) et à couvrir leurs préoccupations dans le SEL.
+</details>
+
+4. <details class="details-menu"><summary>Définir les <b>frontières de la solution</b></summary>
+   Tracer le <i>in/out</i> et les interfaces externes.   <br></br>
+   <b>L’environnement</b> : le système + ce qui interagit avec le système
+</details>
+
+5. <details class="details-menu"><summary>Identifier les <b>contraintes imposées</b> à la solution</summary>
+   Lister les non-négociables (réglementaire, sécurité, techno, budget, délais).  
+</details>
+
+<div class="section-title"><h3>Où chercher l’information et comment la recueillir</h3></div>
+
+Objectif : **transformer des informations brutes** (verbatims, observations, documents) en **exigences claires, mesurables et traçables** dans le SEL.
+
+<style>
+  .details-menu summary { list-style:none; cursor:pointer; font-weight:700; padding:.25rem 0; }
+  .details-menu summary::-webkit-details-marker { display:none; }
+  .details-menu summary::before { content:"▶"; font-size:.9em; margin-right:.5rem; transition:transform .2s ease; }
+  .details-menu[open] summary::before { content:"▼"; }
+  .tip { background:#f8f9fb; border:1px solid #e5e7eb; padding:10px 12px; margin:10px 0; }
+</style>
+
+### Quelques techniques
+
+<details class="details-menu"><summary>Entretiens (semi-dirigés, 1:1 ou petits groupes)</summary>
+<b>Quand</b> : explorer besoins/contraintes, comprendre langage métier.  
+<b>Comment</b> : questions ouvertes (“Pouvez-vous me montrer… ?”), reformulation, exemples concrets, éviter le jargon technique.  
+</details>
+
+<details class="details-menu"><summary>Observation / shadowing</summary>
+<b>Quand</b> : écart “ce qu’on dit” vs “ce qu’on fait”.  
+<b>Comment</b> : observer une tâche, parcours actuel (*as-is*), chronométrer, noter exceptions/contournements, irritants mesurés,.  
+</details>
+
+<details class="details-menu"><summary>Ateliers collaboratifs (story mapping / event storming)</summary>
+<b>Quand</b> : aligner rapidement plusieurs profils.  
+<b>Comment</b> : post-its “activités → étapes → détails”, valider le flux bout-à-bout.  
+</details>
+
+<details class="details-menu"><summary>Analyse documentaire & contraintes</summary>
+<b>Quand</b> : normes, politiques, contrats, conformité.  
+<b>Comment</b> : extraire obligations, seuils, exceptions légales.  
+</details>
+
+<details class="details-menu"><summary>Questionnaires courts</summary>
+<b>Quand</b> : sonder préférences/volumes à large échelle.  
+<b>Comment</b> : questions fermées + 1 ouverte, limité à 5-10 min.  
+</details>
+
+<details class="details-menu"><summary>Prototypage papier / maquettes rapides</summary>
+<b>Quand</b> : valider vocabulaire/flux sans coder.  
+<b>Comment</b> : parcours cliquable minimal, tester 3 tâches clés.  
+</details>
+
+### Questions utiles 
+- **Montrez-moi** comment vous faites aujourd’hui (étapes + outils).  
+- **Quand est-ce difficile ?** (exemples récents, fréquence, impact)  
+- **Quand est-ce réussi ?** (critères concrets d’un bon résultat)  
+- **Que doit éviter le système ?** (risques, erreurs coûteuses)  
+
+<div class="tip"><b>Attention aux biais</b> : éviter les “solutions prémâchées” (“vous voulez un chatbot ?”) ; rechercher d’abord le <i>problème</i>, les <i>règles</i>, les <i>exemples</i>, les <i>seuils mesurables</i>.</div>
+
+{{< figure
+    src="/420-310/images/requirements-workflow.png"
+    alt="Flux itératif des exigences : analyser le problème, comprendre les besoins, définir le système, gérer le périmètre, affiner, gérer les changements"
+    caption="Workflow d’ingénierie des exigences : boucles d’itération & gestion du changement en parallèle"
+    width="720"
+>}}
+
+<div class="section-title"><h3>Exigences <b>fonctionnelles</b> vs <b>non fonctionnelles</b> </h3></div>
+<!-- AJOUTER CONTRAINTES !!!  -->
+
+Les exigences **non fonctionnelles** désignent les attributs de qualité d'un système qui **définissent ses performances plutôt que ses fonctions**. Contrairement aux exigences **fonctionnelles**, qui spécifient les **actions et les tâches qu'un système doit accomplir**, les exigences **non fonctionnelles** se concentrent sur les **caractéristiques globales et le comportement du système dans diverses conditions**. 
+<!-- Elles abordent des aspects tels que la performance, la convivialité, la fiabilité et l'évolutivité, garantissant ainsi que le système répond aux normes de qualité et offre une expérience utilisateur satisfaisante. -->
+
+<!-- ajouter les contraintes  -->
 {{% tabs %}}
 
 {{% tab title="Exigences fonctionnelles" %}}
@@ -163,7 +277,101 @@ Lors d’une recherche sur le catalogue de 10 000 articles **aux heures de point
 
 {{% /tabs %}}
 
-## Les cmposantes principales d’un **SEL**
+<div class="section-title"><h3>Les contraintes — pense-bête (par catégories)</h3></div>
+
+{{% tabs %}}
+
+{{% tab title="Économiques" %}}
+
+- Contraintes **financières / budgétaires** ?
+- Considérations de **tarification** ?
+- Problèmes de **licences** (coûts, modèles, limites) ?
+{{% /tab %}}
+
+{{% tab title="Politiques" %}}
+- **Politiques internes / externes** qui impactent la solution ?
+- **Problèmes interdépartementaux** (gouvernance, responsabilités) ?
+{{% /tab %}}
+
+{{% tab title="Techniques" %}}
+- Choix **technologiques imposés** / **interdits** ?
+- **Plateforme** ou **technologie existante** à utiliser ?
+- Recours à des **composants logiciels achetés** (COTS) ?
+{{% /tab %}}
+
+{{% tab title="Systèmes (existants)" %}}
+- La solution existe **déjà partiellement** dans nos systèmes ?
+- **Compatibilité** requise avec les solutions en place ?
+- **OS / environnements** à supporter ?
+{{% /tab %}}
+
+{{% tab title="Environnementales & légales" %}}
+- Contraintes **environnementales** ?
+- Obligations **légales / réglementaires** ?
+- Exigences de **sécurité** (organisationnelles/techniques) ?
+- **Standards** à suivre / certifs à obtenir ?
+{{% /tab %}}
+
+{{% tab title="Plan & ressources" %}}
+- **Échéancier imposé** ?
+- **Ressources** (humaines/équipements) **imposées** ?
+- Possibilité de **sous-traiter** ?
+- Peut-on **ajouter des ressources** (temporairement / en permanence) ?
+{{% /tab %}}
+
+{{% /tabs %}}
+
+<style>
+  .exercise-box{
+    margin:16px 0; padding:14px 16px;
+    background:#eef6ff;               
+    border:1px solid #c7ddff;         
+    border-left:6px solid #3b82f6;   
+    border-radius:8px;
+  }
+  .exercise-box h3{ margin:0 0 8px 0; }
+  .exercise-box blockquote{
+    margin:8px 0 12px 0; padding:8px 12px;
+    background:#ffffff; border-left:4px solid #93c5fd;
+  }
+
+  /* Flèche custom pour le menu déroulant */
+  .details-menu summary { list-style: none; cursor: pointer; font-weight: 700; padding: .25rem 0; }
+  .details-menu summary::-webkit-details-marker { display: none; }
+  .details-menu summary::before { content: "▶"; font-size: .9em; margin-right: .5rem; transition: transform .2s ease; }
+  .details-menu[open] summary::before { content: "▼"; }
+</style>
+
+<div class="exercise-box">
+<h3>Exercice — rendre testables des exigences floues</h3>
+
+<blockquote>
+<b>Énoncé client</b><br>
+« Le client souhaite une application qui soit <b>rapide</b>, <b>facile à utiliser</b>, qui <b>ne tombe jamais en panne</b>, et surtout <b>sécurisée</b>. L’application devra aussi <b>fonctionner sur les navigateurs les plus utilisés</b>. »
+</blockquote>
+
+<h4> À faire </h4>
+<ul>
+  <li>Identifier les <b>exigences mal formulées</b>.</li>
+  <li>Reformuler chaque point en une <b>exigence fonctionnelle</b> ou <b>non fonctionnelle</b> <b>claire et testable</b>
+      (avec métrique, seuil, contexte et, si pertinent, méthode de mesure).</li>
+</ul>
+
+<details class="details-menu">
+  <summary>Voir une proposition de correction</summary>
+  <ul>
+    <li><b>Rapide →</b> « Le <b>temps de réponse</b> ne doit pas dépasser <b>2 secondes</b> pour <b>95 %</b> des requêtes sous une <b>charge de 500 utilisateurs simultanés</b>. »</li>
+    <li><b>Facile à utiliser →</b> « L’interface doit respecter les <b>normes WCAG 2.1 niveau AA</b> et proposer une <b>navigation en 3 clics maximum</b> pour accéder aux fonctions principales. »</li>
+    <li><b>Ne tombe jamais en panne →</b> « Le système doit garantir une <b>disponibilité de 99,9 %/mois</b>. »</li>
+    <li><b>Sécurisée →</b> « Toutes les communications doivent être <b>chiffrées en TLS 1.3</b> et les mots de passe <b>stockés avec bcrypt</b>. »</li>
+    <li><b>Navigateurs les plus utilisés →</b> « L’application doit être <b>compatible</b> avec les <b>deux dernières versions</b> de <b>Chrome</b>, <b>Firefox</b> et <b>Safari</b>. »</li>
+  </ul>
+</details>
+</div>
+
+
+<div class="section-title"><h3>Les composantes principales d’un <b>SEL</b></b> </h3></div>
+
 1. **Méta & version** — titre, auteur·e·s, version, historique des changements. 
 2. **Glossaire** — termes métier et acronymes.  
 3. **Vision & contexte** — problème, objectifs, parties prenantes.  
@@ -180,6 +388,51 @@ Lors d’une recherche sur le catalogue de 10 000 articles **aux heures de point
 Nous analyserons ce rapport pour la structure d’un SEL, la formulation F/NF et la traçabilité.  
 **Lien** : http://www.info2.uqam.ca/~makarenkov_v/INM5151/sel_ete2015/SEL_Les_AS_Rapport.pdf
 {{% /notice %}}
+
+<!-- === Styles locaux pour l'encadré d'exercice + flèche du détail === -->
+<style>
+  .exercise-box{
+    margin:16px 0; padding:14px 16px;
+    background:#eef6ff;               /* bleu pâle */
+    border:1px solid #c7ddff;         /* contour bleu */
+    border-left:6px solid #3b82f6;    /* accent */
+    border-radius:8px;
+  }
+  .exercise-box h3{ margin:0 0 8px 0; }
+  .exercise-box h4{ margin:10px 0 6px 0; }
+  .exercise-box blockquote{
+    margin:8px 0 12px 0; padding:8px 12px;
+    background:#ffffff; border-left:4px solid #93c5fd;
+  }
+
+  /* Flèche custom pour les menus déroulants */
+  .details-menu summary { list-style: none; cursor: pointer; font-weight: 700; padding: .25rem 0; }
+  .details-menu summary::-webkit-details-marker { display: none; }
+  .details-menu summary::before { content: "▶"; font-size: .9em; margin-right: .5rem; transition: transform .2s ease; }
+  .details-menu[open] summary::before { content: "▼"; }
+</style>
+
+<div class="exercise-box">
+<h3>Exercice — analyse d'un cas et extraction d'informations pertinentes </h3>
+
+<blockquote>
+<b>Consigne</b><br>
+Téléchargez sur <b>Moodle</b> l’énoncé du cas « <i>Application d’entraide pour la communauté étudiante</i> ».<br>
+À partir de la description du cas fourni, vous devez <b>extraire</b> et <b>rédiger</b> une première version du <b>SEL</b> en vous concentrant <b>sur les sections exigées uniquement</b>.
+</blockquote>
+
+<h4>À faire</h4>
+
+1. <b>Identifier les parties prenantes</b> (rôles et intérêts). 
+   
+2. <b>Soutirer les exigences</b> et les <b>classer</b> :  
+   - <b>Fonctionnelles (F)</b> — ce que le système fait.  
+   - <b>Non fonctionnelles (NF)</b> — qualités mesurables/contraintes globales.  
+   - <b>Contraintes (C)</b> — obligations externes (techno, accès, règles).  
+3. <b>Rédiger</b> chaque exigence en <b>bonne forme</b> (univoque, testable, traçable).  
+
+<p><i>Les solutions complètes seront discutées en classe (pas de correction révélée ici). </i> </p>
+</div>
 
 
 <!-- ![alt text](image.png) -->

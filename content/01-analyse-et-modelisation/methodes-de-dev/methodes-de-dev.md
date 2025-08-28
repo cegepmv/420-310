@@ -5,6 +5,9 @@ title = "Les méthodologies de développement"
 weight = 3
 draft = true
 +++
+
+<!-- LOG410 cours 2 - méthdoes de dev et exigences  -->
+
 <!-- 
 rencontre 04
 modèles de développement

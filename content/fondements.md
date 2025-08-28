@@ -59,11 +59,11 @@ Un système logiciel contient des structures, et cette définition note qu'un sy
 
 {{% /tabs %}}
 
-<!-- === Styles locaux pour les titres et accordéons === -->
+<!-- === styles locaux pour les titres et accordéons === -->
 <style>
-  /* Titres de section — style léger */
+  /* titres de section — style léger */
   .section-title{
-    background:#f8f9fb;            /* gris doux */
+    background:#f8f9fb;            
     border:1px solid #e5e7eb;
     border-radius:8px;
     padding:8px 12px;
@@ -72,12 +72,12 @@ Un système logiciel contient des structures, et cette définition note qu'un sy
   .section-title h3{ margin:0; font-weight:700; }
 
   .details-menu summary {
-    list-style: none;              /* cache la flèche par défaut (Firefox) */
+    list-style: none;             
     cursor: pointer;
     padding: .25rem 0;
     font-weight: 700;
   }
-  .details-menu summary::-webkit-details-marker { display: none; } /* Chrome/Safari */
+  .details-menu summary::-webkit-details-marker { display: none; }
   .details-menu summary::before {
     content: "▶";
     font-size: .9em;
