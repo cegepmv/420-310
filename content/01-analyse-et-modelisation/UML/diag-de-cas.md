@@ -105,4 +105,48 @@ Le diagramme **ne suffit pas** : rédiger une **fiche** (souple, testable). Le d
 </table>
 
 ---
-<!-- Exercice de use case dans rencontre 03 à la fin  -->
+<!-- Exercice de use case dans rencontre 03 à la fin  : reprendre TP réda -->
+
+<!-- 1 utiolisat 2 rôles : sophie (utilisatrice réelle) peut 
+- demander de l’aide en programmation → Acteur : Étudiant·e aidé·e (initie « Demander de l’aide », « Consulter ses rendez-vous ») ;
+- offrir de l’aide en maths → Acteur : Tuteur·rice (initie « Offrir son aide », « Déclarer une séance », « Se désinscrire comme tuteur »). -->
+
+
+<!-- Autres acteurs (exemples)
+- Conseiller pédagogique : valide les candidatures de tuteurs, consulte des rapports.
+- SSO institutionnel (système externe) : authentifie les usagers.
+- Service MIO (système externe) : envoie les notifications. -->
+
+<!-- Faux acteurs (à ne pas modéliser comme acteurs)
+- Base de données : interne à l’application (à l’intérieur de la frontière système) → pas un acteur.
+- Comité pédagogique : partie prenante qui définit des politiques, mais n’utilise pas directement l’application (aucun cas d’utilisation déclenché).
+- Badge “Tuteur” : objet/artefact, pas un rôle qui interagit. 
+La paie qui définit cmb de tueurs on à le droit-->
+
+<!-- Parties prenantes ≠ acteurs : si elles n’initient/consomment aucun cas d’utilisation, ne pas les modéliser en acteurs (mais les garder dans la section « parties prenantes » du SEL). -->
+<!-- Définition (ISO/IEC/IEEE 42010) : une partie prenante est une personne, équipe ou organisation qui a des préoccupations vis-à-vis du système.
+→ Un système en tant qu’objet technique n’a pas de “préoccupations”; ce sont ses propriétaires/opérateurs qui en ont.
+
+En pratique (ingénierie des exigences) : on dit parfois “le système de paiement est une partie prenante” par raccourci, parce qu’il impose des contraintes (interface, sécurité, SLA) et influence le projet. -->
+
+<!-- Mémo “Acteur vs Partie prenante”
+Acteur : rôle qui interagit directement avec le système (humain, autre système, dispositif).
+Partie prenante : personne/équipe/organisme impacté(e) ou ayant des attentes (peut être sans interaction directe). -->
+
+<!-- décomposition trop fine attention 
+Cas d’utilisation listés (trop détaillés, décrivent des étapes UI plutôt qu’un but observable) :
+
+Cliquer sur « Ajouter au panier »
+Saisir quantité
+Retirer un article du panier
+Saisir code promo
+Valider le panier
+Saisir adresse de livraison
+Choisir mode de livraison
+Saisir adresse de facturation
+Saisir numéro de carte
+Confirmer la commande
+Recevoir courriel de confirmation
+Télécharger la facture PDF
+
+Problème : ces “UC” sont des interactions fines (clics/champs) ou des effets internes ; ils fragmentent un même objectif métier (“Acheter un produit”). Le diagramme devient verbeux, difficile à lire et à tester. -->

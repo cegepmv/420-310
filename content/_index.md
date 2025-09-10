@@ -25,3 +25,8 @@ Enfin, la démarche adoptée met l’accent sur la nuance : il n’existe jamais
 | **2** | Architecture et conception | MVC & variantes, patrons (Observer, Adapter, Facade, Strategy, Factory…), principes de *design* (cohésion, couplage, retour sur encapsulation/héritage/composition/polymorphisme ), séparation des couches, normalisation de base de données |
 | **3** | Tests et qualité | TDD, JUnit, tests d’intégration, introduction aux pipelines CI/CD |
 
+
+<!-- sem 3 diag use case + donner TP 
+sem 4 diag de classes + suite TP (remise TP retro act)
+sem 5 les méthodologies de dev (remise TP - retro act)
+sem 6 exam + remise TP (remise TP - note finale) -->
