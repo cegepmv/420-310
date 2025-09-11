@@ -40,4 +40,5 @@ L’objectif de ce module est de **transformer un besoin flou en spécifications
 
 
 
-
+<!-- Question exam 
+oartie prenantes = acteurs ? -->

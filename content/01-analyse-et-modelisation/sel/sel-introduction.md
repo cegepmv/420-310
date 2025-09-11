@@ -506,3 +506,6 @@ Le système crée la réservation, envoie la confirmation.
 Alternatif : créneau plus disponible → proposer alternatives.
 Exception : quota atteint → refuser avec message explicite.
 Postconditions : réservation “Confirmée”, événement de notification planifié. -->
+
+
+<!-- Exemple calucler la disponibilité sur un an de AWS -->

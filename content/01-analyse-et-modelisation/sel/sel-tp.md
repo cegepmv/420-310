@@ -10,9 +10,9 @@ L'atelier suivant débutera par l'**analyse la première rencontre avec votre «
 
 ##### **Les remises** 
 - Vous devrez suivre le **gabarit SEL disponible sur moodle** afin d'entamer ce travail. 
-- Une premiere ébauche sera attendu à la **semaine 3**, sur laquelle vous receverez des **commentaires**. 
-- Une **remise évalué** se fera ensuite sur moodle à la **semaine 4**, celle-ci vaudra pour **30% de votre note**. 
-- Enfin la remise finale du travail se fera à la **semaine 6** pour la **note finale**. 
+- Une premiere ébauche sera attendu à la **semaine 4**, sur laquelle vous receverez des **commentaires**. 
+- Une **remise évalué** se fera ensuite sur moodle à la **semaine 5**, celle-ci vaudra pour **30% de votre note**. 
+- Enfin la remise finale du travail se fera à la **semaine 7** pour la **note finale**. 
 - La **totalité des sections** du gabarit devront être **complètes** pour la remise finale. 
 - Les **remises intermédiaires** nécessiteront d'avancer sur certaines sections priorisées ; les priorités seront annoncées en classe par l’enseignante (à vous de les noter).
 > Le travail devra se faire en **équipe de 2**. Veuillez noter que vous devrez garder le **même équipier** pour la **suite des travaux de la session** ; choisissez bien, et enregistrez votre choix sur moodle avant de débuter. 
