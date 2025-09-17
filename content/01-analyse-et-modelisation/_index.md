@@ -42,3 +42,6 @@ L’objectif de ce module est de **transformer un besoin flou en spécifications
 
 <!-- Question exam 
 oartie prenantes = acteurs ? -->
+<!-- 
+Faire diag de poisson pr un site lent 
+Faire le calcul de cmb d'heure non dispo selon un % de dispo (AWS) -->

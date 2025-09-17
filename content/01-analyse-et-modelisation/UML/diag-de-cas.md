@@ -121,7 +121,7 @@ Le diagramme **ne suffit pas** : rédiger une **fiche** (souple, testable). Le d
 - Base de données : interne à l’application (à l’intérieur de la frontière système) → pas un acteur.
 - Comité pédagogique : partie prenante qui définit des politiques, mais n’utilise pas directement l’application (aucun cas d’utilisation déclenché).
 - Badge “Tuteur” : objet/artefact, pas un rôle qui interagit. 
-La paie qui définit cmb de tueurs on à le droit-->
+La paie qui définit cmb de tuteurs on à le droit-->
 
 <!-- Parties prenantes ≠ acteurs : si elles n’initient/consomment aucun cas d’utilisation, ne pas les modéliser en acteurs (mais les garder dans la section « parties prenantes » du SEL). -->
 <!-- Définition (ISO/IEC/IEEE 42010) : une partie prenante est une personne, équipe ou organisation qui a des préoccupations vis-à-vis du système.
