@@ -3,7 +3,6 @@
 pre = '<b>1.3 </b>'
 title = "Les méthodologies de développement"
 weight = 3
-draft = false
 +++
 
 À travers cette section, nous introduisons trois méthodologies de développement logiciel importantes. Elles représentent une évolution historique des pratiques et permettent de comparer des approches plus **planifiées** avec des approches plus **flexibles**.
