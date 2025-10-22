@@ -32,8 +32,6 @@ L’application est déployée en **un seul artefact** (processus/binaire) : tou
 **Quand l’utiliser ?**
 On choisit une architecture monolithique surtout au **démarrage d’un produit**, quand il faut livrer vite avec des **contraintes de temps et de budget**. Elle convient bien à un **domaine peu complexe**, avec une charge modérée et des **besoins qui évoluent peu** au début. En bref, c’est un bon **point de départ simple** avant d’envisager une structure plus découpée.
 
-<!-- ![Tree swing](/420-310/images/tree_swing.jpg) -->
-
 {{< figure
     src="/420-310/images/monolith_tamara.webp"
     alt="Monolithe, monolithe modulaire et monolithe modulaire distribué"
