@@ -5,7 +5,7 @@ weight = 1
 draft = false 
 +++
 
-Les architectures logicielles courantes comprennent les **architectures monolithiques**, les **microservices**, les **architectures en couches**, **orientées événements**, **client-serveur** et les **architectures orientées services (SOA)**. Le choix dépend des besoins du projet, tels que la complexité, l'évolutivité et le temps de réponse souhaité. 
+Les architectures logicielles courantes comprennent les **architectures monolithiques**, les **microservices**, **orientées événements**, **client-serveur** et les **architectures orientées services (SOA)**. Le choix dépend des besoins du projet, tels que la complexité, l'évolutivité et le temps de réponse souhaité. 
 
 À travers ce module, nous passerons en revue quelques **styles d’architecture logicielle** (n-tiers, microservices, etc.) afin d’apprendre à **les distinguer**, à comprendre leurs **forces et limites**, et à reconnaître les contextes dans lesquels chacun excelle. Nous verrons aussi comment planifier une migration progressive (ex.: monolithe → monolithe modulaire → microservices), en minimisant les risques et en maximisant la valeur pour le projet et l’équipe.
 

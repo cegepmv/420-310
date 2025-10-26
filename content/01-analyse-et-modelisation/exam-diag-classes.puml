@@ -1,0 +1,118 @@
+@startuml
+title "Gestion d'école"
+
+' ========================
+' Classes principales
+' ========================
+
+class Ecole {
+  - nom : String
+  - adresse : String
+  - listeEtudiants : List<Etudiant>
+  - listeEnseignants : List<Enseignant>
+  - listeCours : List<Cours>
+  + inscrireEtudiant(etudiant : Etudiant)
+  + ajouterCours(cours : Cours)
+  + assignerEnseignant(enseignant : Enseignant, cours : Cours)
+  + afficherInformations() : void
+}
+
+class Etudiant {
+  - nom : String
+  - matricule : String
+  - programme : String
+  - listeCours : List<Cours>
+  + sInscrire(cours : Cours)
+  + consulterHoraire() : void
+  + calculerMoyenne() : Double
+}
+
+class Enseignant {
+  - nom : String
+  - id : Int
+  - specialite : String
+  - listeCours : List<Cours>
+  + donnerCours(cours : Cours)
+  + corrigerTravaux() : void
+}
+
+class Cours {
+  - code : String
+  - titre : String
+  - nbHeures : Int
+  - enseignant : Enseignant
+  - listeEtudiants : List<Etudiant>
+  - groupe : Groupe
+  + ajouterEtudiant(etudiant : Etudiant)
+  + attribuerEnseignant(enseignant : Enseignant)
+  + getNbEtudiants() : Int
+}
+
+class Groupe {
+  - numero : Int
+  - listeEtudiants : List<Etudiant>
+  + planifierHoraire() : void
+  + afficherMembres() : void
+}
+
+class ServicePaiement {
+  + traiterPaiement(etudiant : Etudiant, montant : Double)
+  + genererRecu(etudiant : Etudiant)
+}
+
+class SystemeEcole {
+  - listeEtudiants : List<Etudiant>
+  - listeEnseignants : List<Enseignant>
+  - listeCours : List<Cours>
+  - listeGroupes : List<Groupe>
+  - nomEcole : String
+  - adresseEcole : String
+  + inscrireEtudiant(etudiant : Etudiant)
+  + creerCours(cours : Cours)
+  + assignerEnseignant(enseignant : Enseignant, cours : Cours)
+  + genererHoraire()
+  + calculerMoyenne(etudiant : Etudiant) : Double
+  + envoyerCourriel(destinataire : String, message : String)
+  + sauvegarderDonnees()
+  + exporterStatistiques() : Boolean
+  + gererPaiement(montant : Double)
+  + archiverDossiers()
+}
+
+' ========================
+' Liens UML
+' ========================
+
+' Une école agrège ses éléments principaux
+Ecole "1" o-- "*" Etudiant
+Ecole "1" o-- "*" Enseignant
+Ecole "1" o-- "*" Cours
+
+' Un cours est enseigné par un enseignant
+Cours "1" --> "1" Enseignant : enseigne
+
+' Un cours contient plusieurs étudiants inscrits
+Cours "1" --> "*" Etudiant : inscription
+
+' Un cours est associé à un groupe
+Cours "1" o-- "1" Groupe : groupe
+
+' Un groupe regroupe plusieurs étudiants
+Groupe "1" --> "*" Etudiant : membres
+
+' Un étudiant peut suivre plusieurs cours
+Etudiant "*" --> "*" Cours : suit
+
+' L’école dépend du service de paiement (non structurel)
+' glisser une erreur de lien ici 
+' Ecole ..> ServicePaiement : utilise 
+Ecole --> ServicePaiement : utilise 
+
+' SystemeEcole gère tout (mais à travers des agrégations, pas des dépendances)
+SystemeEcole <-- Ecole
+SystemeEcole o-- Etudiant
+SystemeEcole o-- Enseignant
+SystemeEcole o-- Cours
+SystemeEcole o-- Groupe
+
+@enduml
