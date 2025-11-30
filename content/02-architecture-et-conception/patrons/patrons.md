@@ -1,5 +1,5 @@
 +++
-pre = '<b>2.3 </b>'
+pre = '<b>2.4 </b>'
 title = "Les patrons de conceptions"
 weight = 4
 draft = false 

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>TP &mdash; SYST&Egrave;ME DE R&Eacute;SERVATION DE VOYAGES</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+</style>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+<link href="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="tp--système-de-réservation-de-voyages">TP — SYSTÈME DE RÉSERVATION DE VOYAGES</h1>
+<style>
+:root{
+  --air-bg:   #f0f7ff;
+  --air-border:#2188ff;
+  --air-text: #0b3d91;
+
+  --rail-bg:   #f7fff3;
+  --rail-border:#23a455;
+  --rail-text: #0c5a2d;
+
+  --variant-pad: 0.9rem 1rem;
+  --variant-radius: 12px;
+  --variant-gap: 0.5rem;
+}
+
+.variant{
+  position: relative;
+  margin: 0.75rem 0;
+  padding: var(--variant-pad);
+  border-radius: var(--variant-radius);
+  border-left: 6px solid;
+  box-shadow: 0 1px 0 rgba(0,0,0,.04);
+}
+
+.variant strong{
+  display: inline-block;
+  margin-bottom: var(--variant-gap);
+}
+
+.variant--air{
+  background: var(--air-bg);
+  border-color: var(--air-border);
+  color: var(--air-text);
+}
+
+.variant--rail{
+  background: var(--rail-bg);
+  border-color: var(--rail-border);
+  color: var(--rail-text);
+}
+
+/* Icône/étiquette en haut à gauche */
+.variant::before{
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  padding: 2px 8px;
+  font-weight: 700;
+  font-size: 0.75rem;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,.08);
+  letter-spacing: .02em;
+}
+.variant--air::before{
+  content: "✈️";
+  color: var(--air-text);
+  border: 1px solid var(--air-border);
+}
+.variant--rail::before{
+  content: "🚆";
+  color: var(--rail-text);
+  border: 1px solid var(--rail-border);
+}
+
+/* Bonne lisibilité en impression */
+@media print{
+  .variant{ box-shadow: none; }
+  .variant--air, .variant--rail{ background: #fff; }
+}
+
+/* Optionnel : compatibilité Markdown (paragraphes serrés) */
+.variant p{ margin: 0.4rem 0; }
+.variant{ -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+@media print{ .variant{ box-shadow:none; } }
+
+</style>
+<p>Le présent travail vous amènera à <strong>concevoir et prototyper un système de réservation de voyages</strong> couvrant deux modes : aérien (avion) et ferroviaire (train). L’application comprend deux volets : un <strong>volet administratif</strong> (gestion de l’offre) et un <strong>volet client</strong> (recherche, réservation, paiement simulé), dont les besoins sont décrits ci-dessous. Le projet combine <strong>rédaction d’un SEL</strong>, <strong>modélisation UML</strong> (diagramme de classes + patrons) et <strong>implémentation MVC légère</strong>.</p>
+<h3 id="général"><strong>Général</strong></h3>
+<p>L’objectif est de livrer un prototype fonctionnel minimal qui illustre un enchaînement simple : 1) publier des trajets (admin) → 2) rechercher (client) → 3) reserver un siège (client) → 4) confirmer/payer (client, paiement simulé).</p>
+<p><strong>Éléments hors portée (focalisés sur les besoins de base)</strong>:</p>
+<ul>
+<li>Aller simple uniquement; une réservation porte sur un trajet (pas de panier multi-trajets, pas d’allers-retours).</li>
+<li>Aucune gestion d’authentification forte (pas de paiements réels, pas d’authentification/autorisation avancée).</li>
+<li>Un stockage en mémoire (pas de base de données exigée / persistance durable).</li>
+</ul>
+<h3 id="volet-administratif"><strong>Volet administratif</strong></h3>
+<p>L’administrateur gère les <strong>terminaux</strong>, les <strong>opérateurs</strong> et <strong>l’offre de trajets</strong>.</p>
+<ul>
+<li>Un <strong>terminal</strong> (aéroport ou gare) est identifié par un <strong>code de trois lettres unique</strong> et est associé à une <strong>ville</strong> quelque part dans le monde.</li>
+<li>Un <strong>opérateur</strong> (compagnie aérienne ou ligne de train) détient un <strong>identifiant alphanumérique ≤ 6 caractères</strong>, unique dans le système.</li>
+<li>L’<strong>offre</strong> se compose de <strong>trajets programmés</strong> avec <strong>date/heure de départ</strong> (et d’arrivée si pertinent), rattachés à un <strong>opérateur</strong> et reliant des <strong>terminaux distincts</strong> (origine ≠ destination).</li>
+</ul>
+<div class="variant variant--air">
+  <p><strong>Variante aviation :</strong> chaque <strong>vol</strong> porte un <strong>ID</strong> commençant par <strong>deux lettres</strong> (réservées à la compagnie) suivies de <strong>chiffres</strong> ; la partie alphabétique est <strong>unique à la compagnie</strong>, la partie numérique est <strong>unique par vol</strong> au sein de cette compagnie.</p>
+</div>
+<div class="variant variant--rail">
+  <p><strong>Variante ferroviaire :</strong> un <strong>trajet de train</strong> appartient à une <strong>ligne</strong> et parcourt une <strong>suite fixe de gares</strong> dans un ordre déterminé (les arrêts intermédiaires font partie de la définition du trajet).</p>
+</div>
+<!-- **Variante aviation** : chaque **vol** porte un **ID** commençant par **deux lettres** (réservées à la compagnie) suivies de **chiffres** ; la partie alphabétique est **unique à la compagnie**, la partie numérique est **unique par vol au sein de cette compagnie**.
+**Variante ferroviaire** : un **trajet de train** appartient à une **ligne** et parcourt une **suite fixe de gares** dans un ordre déterminé (les arrêts intermédiaires font partie de la définition du trajet). -->
+<p>Chaque véhicule comporte des <strong>sections</strong> (classes) et des <strong>sièges</strong>. Les <strong>sièges d’une même section partagent exactement le même prix</strong>. La <strong>tarification</strong> de base dépend de l’opérateur, avec les coefficients : <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mi>F</mi></msub><mo>=</mo><mn>1</mn><mspace width="1em"/><msub><mi>α</mi><mi>A</mi></msub><mo>=</mo><mn>0,75</mn><mspace width="1em"/><msub><mi>α</mi><mi>P</mi></msub><mo>=</mo><mn>0,60</mn><mspace width="1em"/><msub><mi>α</mi><mi>E</mi></msub><mo>=</mo><mn>0,50</mn></mrow><annotation encoding="application/x-tex">\alpha_F=1\quad\alpha_A=0{,}75\quad\alpha_P=0{,}60\quad\alpha_E=0{,}50</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">F</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7944em;vertical-align:-0.15em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:1em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">A</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">75</span><span class="mspace" style="margin-right:1em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.13889em;">P</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">60</span><span class="mspace" style="margin-right:1em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0037em;">α</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0037em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05764em;">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8389em;vertical-align:-0.1944em;"></span><span class="mord">0</span><span class="mord"><span class="mpunct">,</span></span><span class="mord">50</span></span></span></span>, <strong>sans taxe</strong>.</p>
+<!-- F = 100 %, A = 75 %, P = 60 %, E = 50 % -->
+<div class="variant variant--air">
+  <p><strong>Variante <em>aviation</em></strong> : sections possibles : <strong>F</strong>, <strong>A</strong>, <strong>P</strong>, <strong>E</strong> (<em>zéro ou plusieurs, sans doublon</em>).</p>
+  <p>La cabine est maillée en <strong>≤ 100 rangées</strong> et <strong>≤ 10 colonnes</strong> (<strong>A–J</strong>).</p>
+  <p><strong>Gabarits autorisés</strong> par section :</p>
+  <ul>
+    <li><strong>S</strong> : 3 colonnes, couloir entre <strong>1–2</strong></li>
+    <li><strong>C</strong> : 4 colonnes, couloir entre <strong>2–3</strong></li>
+    <li><strong>M</strong> : 6 colonnes, couloir entre <strong>3–4</strong></li>
+    <li><strong>L</strong> : 10 colonnes, couloirs entre <strong>3–4</strong> et <strong>7–8</strong></li>
+  </ul>
+</div>
+<div class="variant variant--rail">
+  <p><strong>Variante <em>ferroviaire</em></strong> : chaque <strong>train</strong> contient au <strong>minimum</strong> les sections <strong>première (P)</strong> et <strong>économie (E)</strong> ; la <strong>disposition des sièges</strong> y est <strong>étroit (S)</strong>.</p>
+</div>
+<p>Enfin, le système doit permettre la <strong>consultation</strong> de l’offre : <strong>lister tous les trajets au départ/à l’arrivée d’un terminal</strong> (aéroport/gare) avec leurs détails, ainsi que <strong>tous les trajets d’un opérateur</strong> donné (compagnie/ligne), toujours avec les informations complètes.</p>
+<h3 id="volet-client"><strong>Volet client</strong></h3>
+<p><strong>La recherche par trajet</strong> <br>
+Le client peut <strong>rechercher des trajets</strong> à partir d’un <strong>terminal d’origine</strong> (aéroport ou gare) vers une <strong>destination</strong>, pour une <strong>date donnée</strong> et <strong>une section</strong> (classe) précisée, en ne retournant que les trajets avec des <strong>sièges libres</strong>.</p>
+<p>Le <strong>système affiche une liste de résultats</strong> dans laquelle pour chaque trajet, on présente :</p>
+<ul>
+<li>la date et l’heure de départ,</li>
+<li>la durée,</li>
+<li>l’heure d’arrivée,</li>
+<li>l’opérateur (compagnie aérienne ou ligne ferroviaire),</li>
+<li>l’identifiant du trajet (numéro de vol ou identifiant de trajet train),</li>
+<li>le prix pour la section demandée</li>
+<li>et le nombre de sièges encore disponibles dans cette section.</li>
+</ul>
+<div class="variant variant--air">
+  <p><strong>Variante <em>aviation</em></strong> : la recherche porte sur des vols entre deux aéroports, en tenant compte des classes F/A/P/E.</p>
+</div>
+<div class="variant variant--rail">
+  <p><strong>Variante <em>ferroviaire</em></strong> : la recherche cible des trajets de train entre deux gares, en tenant compte des sections P/E et de la disponibilité sur le tout le segment demandé.</p>
+</div>
+<p><strong>La réservation de sièges</strong> <br>
+Le client peut <strong>réserver un siège disponible sur un trajet</strong> (contrainte : la réservation n’est possible que si un siège est réellement libre). Il peut indiquer une <strong>préférence de placement</strong> (couloir ou fenêtre).
+À la création, le système fournit un <strong>numéro de réservation</strong>. Un <strong>siège réservé</strong> devient <strong>indisponible</strong> pour les autres passagers pendant <strong>24 heures</strong> ; passé ce délai, <strong>en absence de paiement</strong>, il <strong>redevient disponible</strong>.</p>
+<p><strong>Le paiement</strong> <br>
+Avec son <strong>numéro de réservation</strong>, le client peut <strong>payer son siège réservé</strong>. Il fournit ses <strong>informations personnelles</strong> (nom, courriel, numéro de passeport) et effectue un <strong>paiement par carte de crédit</strong> (paiement simulé).
+Le système émet une <strong>confirmation</strong> : la réservation devient un <strong>siège assigné</strong> au passager et le statut passe à <strong>CONFIRMÉ</strong>.</p>
+<div style="break-before: page;"></div>
+<h3 id="votre-mendat"><strong>Votre mendat</strong></h3>
+<p>Le deroulement de ce travail se fera de manière <strong>ittérative</strong>, avec une <strong>démo partielle évaluée</strong> à chaque itération jusqu’à la remise finale.</p>
+<p>L’<strong>avancement</strong> sera suivi sur <strong>Trello</strong> : vous devez y créer un <strong>tableau Kanban</strong> avec votre coéquipier, inviter l’enseignante (lecture/évaluation) et tenir le <em>board</em> <strong>à jour</strong> (colonnes, cartes, étiquettes, échéances, commentaires) tout au long du projet. Le <strong>tableau sera noté</strong>, au même titre que les <strong>livrables techniques</strong>, et le <strong>travail d’équipe</strong> (organisation, répartition des tâches, communication, respect des délais).</p>
+<p>Le travail est divisé en <strong>trois itérations</strong>, chacune avec son livrable :</p>
+<ul>
+<li>I. spécification des exigences logicielle.</li>
+<li>II. diagramme de classes UML &amp; patrons.</li>
+<li>III. mini MVC en mémoire et tests.</li>
+</ul>
+<p><strong>I. SEL : spécification des exigences logicielle</strong> <br>
+À partir de l'<strong>enocné des besoins</strong>, vous devez amorcer la <strong>rédaction d’un SEL</strong>. Ce dernier sera <strong>révisé et enrichi</strong> au fil des itérations jusqu’à sa version finale pour la remise.</p>
+<ul>
+<li>Vous devrez suivre le <strong>gabarit SEL</strong> disponible sur moodle pour structurer ce livrable.</li>
+<li>La <strong>totalité des sections</strong> du gabarit devront être <strong>complètes</strong> pour la remise finale, sauf indication contraire donnée en classe.</li>
+</ul>
+<p><strong>II. Conception : diagramme de classes UML &amp; patrons</strong> <br>
+Vous devrez produire un <strong>diagramme de classes</strong> centré sur le <strong>domaine</strong> (trajets, sections, réservation, opérateurs/terminaux, services).</p>
+<ul>
+<li><strong>Intégrez les patrons vus en classe</strong> et rendez-les <strong>explicites</strong> dans le diagramme (stéréotypes/<em>tagging</em>), en veillant à ce qu’ils <strong>servent le besoin</strong> (réduction du couplage, variabilité, réutilisation, testabilité).</li>
+<li><strong>Justifiez</strong> brièvement leur <strong>usage</strong> (en 3 phrases : problème visé, choix de conception, impacts).</li>
+</ul>
+<p>Les patrons peuvent être <strong>employés dans des contextes différents</strong> (p. ex. tarification, allocation de sièges, sélection d’un service, configuration… ) : si vous en utilisez un <strong>à plusieurs endroits</strong>, expliquez ce qui <strong>distingue ces contextes</strong>.</p>
+<p>Veillez à illustrer la <strong>séparation logique</strong> entre couche <strong>présentation</strong> (contrôleurs, minces), couche <strong>service</strong> (cas d’usage/applicatif) et couche <strong>domaine</strong> (entités, valeurs, règles), sans surcharger le diagramme de détails techniques superflus.</p>
+<p>Enfin, soigner la <strong>cohérence sémantique</strong> avec le SEL : le vocabulaire, les règles métier (p. ex. origine ≠ destination, prix par section, réservation 24 h) et les cas d’utilisation doivent <strong>se refléter</strong> dans le modèle.</p>
+<blockquote>
+<p><strong>Option (bonus)</strong> : ajoutez un <strong>patron GoF supplémentaire</strong>, pertinent pour votre conception, que vous avez appris à utiliser et qui aura été <strong>validé par l’enseignante</strong> (par ex. un Observer pour notifier la disponibilité).</p>
+</blockquote>
+<!-- Singleton (ex. IdGenerator ou AppConfig)
+Factory (ex. TripServiceFactory → AirTripService / RailTripService)
+Strategy (ex. PricingStrategy pour varier les prix par section/mode) -->
+<!-- > bonus aussi (Recommandé) 1–2 diagrammes de séquence pour illustrer Rechercher et Réserver → Payer. -->
+<p><strong>III. Implémentation : mini MVC (léger, en mémoire)</strong> <br>
+Implémentez un <strong>MVC minimal</strong> pour démontrer <strong>deux contrôleurs</strong> et leurs <strong>cas d’usage associés</strong>, avec une logique métier dans les services et un stockage en mémoire (pas de BD).</p>
+<p>Voici des <strong>exemples concrets de contrôleurs</strong> avec ce qu’ils couvrent en grandes lignes :</p>
+<ul>
+<li>
+<p><code>SearchController</code> — parcours <strong>&quot;consulter l’offre&quot;</strong> <br>
+Intègre la recherche de trajets (par mode (avion/rail), origine/destination, date, section) et affiche le détail d’un trajet (prix par section, disponibilité restante, etc.).</p>
+</li>
+<li>
+<p><code>BookingController</code> — parcours <strong>&quot;réserver → payer → confirmer&quot;</strong>. <br>
+Paiement simulé et confirmation (statut passe CONFIRMÉ).
+Crée une réservation de siège (vérif dispo, préférence couloir/fenêtre, création reservationId, TTL 24 h), puis effectue le paiement simulé et (passe le statut à CONFIRMÉ).
+Il peut égaleent permettre la consultation/annulation d’une réservation.</p>
+</li>
+<li>
+<p><code>AdminTripsController</code> — parcours <strong>&quot;alimenter l’offre&quot;</strong>. <br>
+Gère la création, la mise à jour et la suppression de trajets (opérateur, horaires, sections, prix par section), avec validations. Il permet également le <em>seed</em> rapide de quelques trajets à des fins de de démo pour la correction.</p>
+</li>
+<li>
+<p><code>ReservationStatusController</code> — parcours <strong>&quot;suivre mon dossier&quot;</strong>. <br>
+Expose le statut d’une réservation (RESERVÉ, CONFIRMÉ, expiré) et le temps restant avant expiration.</p>
+</li>
+</ul>
+<p>Le code devra être accompagné de <strong>tests unitaires</strong> visant des <strong>méthodes du modèle</strong> (p. ex. logique de tarification, disponibilité, allocation de sièges).</p>
+<blockquote>
+<p>Le nombre de tests et les méthodes ciblées seront discutés en classe et pourront varier d’une équipe à l’autre.</p>
+</blockquote>
+<!-- Objectif : une démo fonctionnelle simple prouvant le flux rechercher → réserver → payer avec des contrôleurs fins, des services explicites et des données en mémoire. -->
+<div style="break-before: page;"></div>
+<h3 id="grille-de-correction"><strong>Grille de correction</strong></h3>
+<table>
+<thead>
+<tr>
+<th>Volet</th>
+<th style="text-align:center">Pondération</th>
+<th>Détails d’évaluation (exemples)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Itérations (démos partielles)</strong></td>
+<td style="text-align:center"><strong>30 %</strong></td>
+<td>3 itérations (10 % chacune) : respect des jalons, qualité des démos, capacité à intégrer la rétroaction, progression tangible.</td>
+</tr>
+<tr>
+<td><strong>SEL (Remise finale)</strong></td>
+<td style="text-align:center"><strong>15 %</strong></td>
+<td>Gestion des versions, clarté/portée, glossaire, cas d’utilisation, exigences fonctionnelles / non fonctionnelles, règles métier, hypothèses/contraintes, cohérence interne.</td>
+</tr>
+<tr>
+<td><strong>UML (diagramme de classes)</strong></td>
+<td style="text-align:center"><strong>20 %</strong></td>
+<td>lisibilité et alignement avec le SEL, modèle centré domaine, patrons intégrés et justifiés, invariants.</td>
+</tr>
+<tr>
+<td><strong>Implémentation (mini-MVC en mémoire)</strong></td>
+<td style="text-align:center"><strong>20 %</strong></td>
+<td>2 contrôleurs min., services minces/explicites, flux <em>rechercher → réserver → payer</em>, données d’amorçage, propreté du code/README.</td>
+</tr>
+<tr>
+<td><strong>Unit tests</strong></td>
+<td style="text-align:center"><strong>10 %</strong></td>
+<td>Niveau de tests adéquat, ciblant le modèle (ex. tarification, dispo, allocation), et pertinence des cas, clarté/indépendance.</td>
+</tr>
+<tr>
+<td><strong>Trello &amp; travail d’équipe</strong></td>
+<td style="text-align:center"><strong>5 %</strong></td>
+<td>Kanban à jour (colonnes, cartes, étiquettes, échéances, commentaires), invitation de l’enseignante, répartition/communication, respect des délais.</td>
+</tr>
+</tbody>
+</table>
+
+            <script async src="https://cdn.jsdelivr.net/npm/katex-copytex@latest/dist/katex-copytex.min.js"></script>
+            
+        </body>
+        </html>
